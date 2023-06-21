@@ -26,10 +26,10 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (req.getAttribute("user") == null || req.getAttribute("user").equals("null")) {
-            resp.sendRedirect("/login.jsp");
-        } else {
+        if (req.getAttribute("user") == null || req.getAttribute("user").equals("null") || ((String)req.getAttribute("user")).isEmpty()) {
             resp.sendRedirect("/user/hello.jsp");
+        } else {
+            resp.sendRedirect("/login.jsp");
         }
     }
 }
