@@ -8,7 +8,7 @@ import java.io.IOException;
 public class AuthFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        if (servletRequest.getAttribute("user") == null) {
+        if (servletRequest.getAttribute("user") == null  || servletRequest.getAttribute("user").equals("null")) {
             servletRequest.getRequestDispatcher("/login.jsp").forward(servletRequest, servletResponse);
         }
     }
